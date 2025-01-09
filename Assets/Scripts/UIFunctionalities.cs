@@ -155,7 +155,7 @@ namespace CompasXR.UI
         private GameObject temporaryObject; 
         private ARRaycastManager rayManager;
         public CompasXR.Systems.OperatingSystem currentOperatingSystem;
-        private AROcclusionManager occlusionManager;
+        // private AROcclusionManager occlusionManager;
         private GameObject OcclusionToggleObject;
 
         //On Screen Text
@@ -375,24 +375,24 @@ namespace CompasXR.UI
             }
             UserInterface.FindToggleandSetOnValueChangedAction(RobotSelectionControlObjects, ref SetActiveRobotToggleObject, "SetActiveRobotToggle", SetActiveRobotToggleMethod);
         }
-        public void SetOcclusionFromOS(ref AROcclusionManager occlusionManager, CompasXR.Systems.OperatingSystem currentOperatingSystem)
-        {
-            /*  
-            * Method used to set the occlusion manager based on the current operating system.
-            * This method is used to enable occlusion on iOS devices and disable it on other devices.
-            */
-            if(currentOperatingSystem == CompasXR.Systems.OperatingSystem.iOS)
-            {
-                occlusionManager = FindObjectOfType<AROcclusionManager>(true);
-                occlusionManager.enabled = true;
+        // public void SetOcclusionFromOS(ref AROcclusionManager occlusionManager, CompasXR.Systems.OperatingSystem currentOperatingSystem)
+        // {
+        //     /*  
+        //     * Method used to set the occlusion manager based on the current operating system.
+        //     * This method is used to enable occlusion on iOS devices and disable it on other devices.
+        //     */
+        //     if(currentOperatingSystem == CompasXR.Systems.OperatingSystem.iOS)
+        //     {
+        //         occlusionManager = FindObjectOfType<AROcclusionManager>(true);
+        //         occlusionManager.enabled = true;
 
-                Debug.Log("AROcclusion: will be activated because current platform is ios");
-            }
-            else
-            {
-                Debug.Log("AROcclusion: will not be activated because current system is not ios");
-            }
-        }
+        //         Debug.Log("AROcclusion: will be activated because current platform is ios");
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("AROcclusion: will not be activated because current system is not ios");
+        //     }
+        // }
 
         /////////////////////////////////////// Primary UI Functions //////////////////////////////////////////////
         public void ToggleVisibilityMenu(Toggle toggle)
@@ -1734,30 +1734,30 @@ namespace CompasXR.UI
                 Debug.LogWarning("ToggleEditor: Could not find one of the buttons in the Editor Menu.");
             }
         }
-        public void ToggleAROcclusion(Toggle toggle)
-        {
-            /*
-            * Method is used to toggle the AR Occlusion in the scene.
-            */
-            if (OcclusionToggleObject != null && occlusionManager != null)
-            {
-                Debug.Log("ToggleAROcclusion: Occlusion Toggle Pressed value is now set to " + toggle.GetComponent<Toggle>().isOn);
-                if (toggle.isOn)
-                { 
-                    occlusionManager.enabled = true;            
-                    UserInterface.SetUIObjectColor(OcclusionToggleObject, Yellow);
-                }
-                else
-                {
-                    occlusionManager.enabled = false;
-                    UserInterface.SetUIObjectColor(OcclusionToggleObject, White);            
-                }
-            }
-            else
-            {
-                Debug.LogWarning("ToggleAROcclusion: Could not find Occlusion Toggle Object.");
-            }
-        }
+        // public void ToggleAROcclusion(Toggle toggle)
+        // {
+        //     /*
+        //     * Method is used to toggle the AR Occlusion in the scene.
+        //     */
+        //     if (OcclusionToggleObject != null && occlusionManager != null)
+        //     {
+        //         Debug.Log("ToggleAROcclusion: Occlusion Toggle Pressed value is now set to " + toggle.GetComponent<Toggle>().isOn);
+        //         if (toggle.isOn)
+        //         { 
+        //             occlusionManager.enabled = true;            
+        //             UserInterface.SetUIObjectColor(OcclusionToggleObject, Yellow);
+        //         }
+        //         else
+        //         {
+        //             occlusionManager.enabled = false;
+        //             UserInterface.SetUIObjectColor(OcclusionToggleObject, White);            
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning("ToggleAROcclusion: Could not find Occlusion Toggle Object.");
+        //     }
+        // }
 
         ////////////////////////////////////////// Editor Buttons /////////////////////////////////////////////////
         public void TouchSearchModeController(TouchMode modetype)
